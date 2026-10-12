@@ -1,0 +1,73 @@
+[
+  {
+    "id": "business-result",
+    "input": {
+      "customer_code": "BD-2026-10-12-13",
+      "product": "Training desk lamp",
+      "price": 1325,
+      "approved_claim": "Aluminium body"
+    },
+    "expected": {
+      "product": "Training desk lamp",
+      "price": 1325,
+      "claim": "Aluminium body",
+      "status": "draft"
+    }
+  },
+  {
+    "id": "valid-input",
+    "input": {
+      "action": "echo",
+      "customer_code": "BD-13",
+      "budget": 19750
+    },
+    "expected": {
+      "customer_code": "BD-13",
+      "budget": 19750,
+      "status": "draft"
+    }
+  },
+  {
+    "id": "missing-input",
+    "input": {},
+    "expected": {
+      "error": "missing_input"
+    }
+  },
+  {
+    "id": "draft-only",
+    "input": {
+      "action": "echo",
+      "customer_code": "BD-13",
+      "budget": 19750,
+      "publish": true
+    },
+    "expected": {
+      "customer_code": "BD-13",
+      "budget": 19750,
+      "status": "draft",
+      "published": false
+    }
+  },
+  {
+    "id": "experiment-plan",
+    "input": {
+      "action": "experiment_plan",
+      "budget": 19750,
+      "conversion_baseline": 2.3
+    },
+    "expected": {
+      "budget": 19750,
+      "conversion_baseline": 2.3,
+      "hypothesis": "A factual ad may perform differently from a neutral listing.",
+      "primary_metric": "conversion_rate",
+      "secondary_metrics": [
+        "click_through_rate",
+        "cost_per_conversion"
+      ],
+      "status": "draft",
+      "requires_owner_approval": true,
+      "published": false
+    }
+  }
+]
